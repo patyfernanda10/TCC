@@ -32,7 +32,7 @@ if (isset($_GET['delete'])) {
     $stmt = $conexao->prepare($sql);
     $stmt->bind_param("i", $id);
     if ($stmt->execute()) {
-        echo "Usuário excluído com sucesso.";
+        echo "";
     } else {
         echo "Erro ao excluir usuário: " . $stmt->error;
     }
@@ -54,10 +54,10 @@ $result = $conexao->query($sql);
 <div class="main-content">
 <div class="container">
     <div id="gestao-usuarios" class="section">
-    <h2>Adicionar Novo Usuário</h2>
+    <h2>Lista Usuário</h2>
 
 <!-- Botão para abrir o formulário -->
-<button id="abrir-form-usuarios">+</button>
+
 
 <!-- Formulário sobreposto -->
 <div class="form-overlay" id="usuarios-form-overlay" style="display: none;">
@@ -81,7 +81,7 @@ $result = $conexao->query($sql);
 
     <hr>
     
-    <h2>Lista de Usuários</h2>
+    
     <table border="1">
         <thead>
             <tr>
@@ -98,9 +98,12 @@ $result = $conexao->query($sql);
                 <td><?php echo $row['nome']; ?></td>
                 <td><?php echo $row['email']; ?></td>
                 <td>
-                    <a href="?page=gestao-usuarios&delete=<?php echo $row['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
-                    <!-- Adicione aqui links para editar se necessário -->
-                </td>
+    <a href="?page=gestao-usuarios&delete=<?php echo $row['id']; ?>" 
+       onclick="return confirm('Tem certeza que deseja excluir?')" 
+       class="excluir-button">
+       Excluir
+    </a>
+</td>
             </tr>
             <?php endwhile; ?>
         </tbody>
@@ -248,31 +251,23 @@ table {
         background-color: #e9f4ff;
     }
 
-    button.editar, button.excluir {
-        padding: 8px 12px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
+    .excluir-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff4c4c;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
 
-    button.editar {
-        background-color: #4CAF50;
-        color: white;
-    }
+.excluir-button:hover {
+    background-color: #e60000;
+}
 
-    button.editar:hover {
-        background-color: #45a049;
-    }
-
-    button.excluir {
-        background-color: #f44336;
-        color: white;
-    }
-
-    button.excluir:hover {
-        background-color: #e53935;
-    }
 
     table, th, td {
         border: 1px solid #ddd; /* Cor da borda alterada para cinza claro */

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONG AMIGO FIEL</title>
+    <title>Magnus SGA</title>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../view/publico-home.css">
 
@@ -17,7 +17,6 @@
         <header class="header">
             <nav class="navbar">
                 <b><a href="publico-home.php" class="active">Início</a>
-                <a href="blog.html">Sobre nós</a>
                 <a href="publico-blog.php">Adoção</a>
                 <a href="publico-doacoes.php">Doação</a>
                 <a href="publico-denuncias.php">Denúncias</a>
@@ -37,7 +36,7 @@
 
                 <div class="item" style="background-image: url(Imagens/foto5.jpg);">
                     <div class="content">
-                        <div class="title">ONG SENAI</div>
+                        <div class="title">Magnus SGA</div>
                         <div class="name">Gerenciamento</div>
                         <div class="des">A empresa em si é uma empresa de muito sucesso. Ele repreenderá as palavras de repúdio que resultam dos deveres de culpa e coisas semelhantes.</div>
                         <div class="btn">
@@ -48,7 +47,7 @@
 
                 <div class="item" style="background-image: url(Imagens/foto4.jpg);">
                     <div class="content">
-                        <div class="title">MAGNUS SGO</div>
+                        <div class="title">Magnus SGA</div>
                         <div class="name">Gerenciamento</div>
                         <div class="des">A empresa em si é uma empresa de muito sucesso. Ele repreenderá as palavras de repúdio que resultam dos deveres de culpa e coisas semelhantes.</div>
                         <div class="btn">
@@ -60,7 +59,7 @@
 
                 <div class="item" style="background-image: url(Imagens/foto2.jpg);">
                     <div class="content">
-                        <div class="title">MAGNUS SGO</div>
+                        <div class="title">Magnus SGA</div>
                         <div class="name"></div>
                         <div class="des">A empresa em si é uma empresa de muito sucesso. Ele repreenderá as palavras de repúdio que resultam dos deveres de culpa e coisas semelhantes.</div>
                         <div class="btn">
@@ -68,29 +67,7 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="item" style="background-image: url(Imagens/foto1.jpg);">
-                    <div class="content">
-                        <div class="title">MAGNUS SGO</div>
-                        <div class="name"></div>
-                        <div class="des">A empresa em si é uma empresa de muito sucesso. Ele repreenderá as palavras de repúdio que resultam dos deveres de culpa e coisas semelhantes.</div>
-                        <div class="btn">
-                            
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="item" style="background-image: url(Imagens/foto.jpg);">
-                    <div class="content">
-                        <div class="title">MAGNUS SGO</div>
-                        <div class="name"></div>
-                        <div class="des">A empresa em si é uma empresa de muito sucesso. Ele repreenderá as palavras de repúdio que resultam dos deveres de culpa e coisas semelhantes.</div>
-                        <div class="btn">
-                            
-                        </div>
-                    </div>
-                </div>
+         
 
             </div>
 
@@ -119,7 +96,11 @@
 
                     <h2>Um pouquinho sobre os nossos cuidados</h2>
                     <p class="section_description">
-                        O Nosso espaço trata de fornecer para os nossos hospedes, lazer,diversão, carinho e muito amor. Principalmente para aqueles chegam sofridos e agressivos por conta dos maus tratos que os mesmos sofreram.
+                    Nossa ONG de proteção animal dedica-se ao resgate, cuidado e reabilitação de animais abandonados ou em situação de risco. 
+                        Atuamos com amor e responsabilidade, oferecendo abrigo seguro, atendimento veterinário, alimentação de qualidade e um ambiente acolhedor para cada animal. 
+                        Promovemos campanhas de conscientização sobre a importância da adoção responsável e realizamos feiras de adoção para encontrar lares amorosos para nossos resgatados. 
+                        Além disso, incentivamos a participação da comunidade por meio de voluntariado e doações, garantindo recursos para continuar nossa missão de salvar vidas e proporcionar um futuro melhor para os animais. 
+                        Nossa ONG é um espaço de esperança, onde cada animal encontra uma chance de recomeçar e ser feliz.
                     </p>
 
                     <button><a href="VejaMais.html">Veja Mais</a></button>
@@ -140,6 +121,7 @@
             <div class="title">
                 <div class="titulo">
                     <h1><span>Nossos Amiguinhos Que Foram Adotados</span></h1>
+                    <br><br>
                     <p>A nossa missão é garantir que todos animais acolhidos na nossa ONG sejam entregues para os novos donos sendo bem cuidados,
                     fornecendo controle médico,terapias e muito mais para os nossos amiguinhos em geral.</p>
                 </div>   
@@ -199,64 +181,7 @@
                             <p>Filhotinho docil</p>
                             <button class="btn">Veja mais</button>
                         </div>
-                    </div>
-
-                    <div class="adote-box">
-                        <img src="Imagens/Betoven.jpg" alt="img">
-                        <div class="adote-info">
-                            <h2>Betoven</h2>
-                            <p>Betoven adora uma companhia</p>
-                            <button class="btn">Veja mais</button>
-                        </div>
-                    </div>
-                    <div class="adote-box">
-                        <img src="Imagens/Lia.webp" alt="img">
-                        <div class="adote-info">
-                            <h2>Lady</h2>
-                            <p>Lady é uma pricesinha</p>
-                            <button class="btn">Veja mais</button>
-                        </div>
-                    </div>
-                    <div class="adote-box">
-                        <img src="Imagens/sid.jpg" alt="img">
-                        <div class="adote-info">
-                            <h2>Sid</h2>
-                            <p>O Sid ama brincar com crianças</p>
-                            <button class="btn">Veja mais</button>
-                        </div>
-                    </div>
-                    <div class="adote-box">
-                        <img src="Imagens/malhado.webp" alt="img">
-                        <div class="adote-info">
-                            <h2>Malhado</h2>
-                            <p>Malhado é muito dorminhoco</p>
-                            <button class="btn">Veja mais</button>
-                        </div>
-                    </div>
-                    <div class="adote-box">
-                        <img src="Imagens/Lion.jpg" alt="img">
-                        <div class="adote-info">
-                            <h2>Lion</h2>
-                            <p>Um cachorrinho travesso</p>
-                            <button class="btn">Veja mais</button>
-                        </div>
-                    </div>
-                    <div class="adote-box">
-                        <img src="Imagens/Romeuejulieta.jpg" alt="img">
-                        <div class="adote-info">
-                            <h2>Romeu e Julieta</h2>
-                            <p>Dois bichinhos</p>
-                            <button class="btn">Veja mais</button>
-                        </div>
-                    </div>
-                    <div class="adote-box">
-                        <img src="Imagens/Bidu.jpg" alt="img">
-                        <div class="adote-info">
-                            <h2>Bidu</h2>
-                            <p>Filhotinho docil</p>
-                            <button class="btn">Veja mais</button>
-                        </div>
-                    </div>
+                      </div>
                    
                 </div>
 
@@ -276,7 +201,6 @@
             <div class="room_grid">
                 <div class="room_card">
                     <div class="room_card_image">
-                        <img src="Imagens/gato.png" alt="room" class="room_card_image mx-auto">
                         <div class="room_card_icons">
                             <span><i class='bx bx-heart'></i></span>
                             <span><i class='bx bx-paint'></i></span>
@@ -284,27 +208,9 @@
                         </div>
                     </div>
                     <div class="room_card_details">
-                        <h4>Ração</h4>
+                        <h4>Alimentos Nutritivos</h4>
                         <p>
-                            "Com muito carinho, faço esta doação para ajudar a proporcionar um lar cheio de amor e cuidados para nossos amigos de quatro patas que tanto precisam.
-                        </p>
-                        <h5>Valor Total de doações <span>R$3.000,00</span></h5>
-                        <button class="btn">conferir Agora</button>
-                    </div>
-                </div>
-                <div class="room_card">
-                    <div class="room_card_image">
-                        <img src="Imagens/gato.png" alt="room">
-                        <div class="room_card_icons">
-                            <span><i class='bx bx-heart'></i></span>
-                            <span><i class='bx bx-paint'></i></span>
-                            <span><i class='bx bx-check-shield' ></i></span>
-                        </div>
-                    </div>
-                    <div class="room_card_details">
-                        <h4>Objetos</h4>
-                        <p>
-                            "Com muito carinho, faço esta doação para ajudar a proporcionar um lar cheio de amor e cuidados para nossos amigos de quatro patas que tanto precisam.
+                            "Cada doação de alimento é uma chance de garantir uma refeição e mais um dia de esperança para um animal em necessidade."
                         </p>
                         <h5>Valor Total de doações <span>R$6.583,00</span></h5>
                         <button class="btn">conferir Agora</button>
@@ -320,9 +226,27 @@
                         </div>
                     </div>
                     <div class="room_card_details">
-                        <h4>Cuidados medicos</h4>
+                        <h4>Acessórios</h4>
                         <p>
-                            "Com muito carinho, faço esta doação para ajudar a proporcionar um lar cheio de amor e cuidados para nossos amigos de quatro patas que tanto precisam.
+                            "Ajude a aquecer o coração de um animal em necessidade com a doação de acessórios e roupinhas, garantindo conforto e proteção enquanto eles aguardam um lar cheio de amor."
+                        </p>
+                        <h5>Valor Total de doações <span>R$3.000,00</span></h5>
+                        <button class="btn">conferir Agora</button>
+                    </div>
+                </div>
+                <div class="room_card">
+                    <div class="room_card_image">
+                        <img src="Imagens/gato.png" alt="room">
+                        <div class="room_card_icons">
+                            <span><i class='bx bx-heart'></i></span>
+                            <span><i class='bx bx-paint'></i></span>
+                            <span><i class='bx bx-check-shield' ></i></span>
+                        </div>
+                    </div>
+                    <div class="room_card_details">
+                        <h4>Cuidados médicos</h4>
+                        <p>
+                           "Cada doação de valor é um passo essencial para garantir cuidados médicos e salvar a vida de animais que dependem de nossa ajuda."
                         </p>
                         <h5>Valor Total de doações <span>R$15.253,00</span></h5>
                         <button class="btn">conferir Agora</button>
@@ -335,34 +259,12 @@
 
 
 
-
-
-        <!-- Denuncias-->
-
-
-
-
-
-
-
-        <!-- Parcerias-->
-
-
-
-
-
-
-
-
-
-
-
         <!-- Rodapé Section -->
         <footer id="contact">
             <div class="container">
                 <div class="f-container">
-                    <h2> Magnus SGO
-                    <p>de Gerenciamento</p></h2>
+                    <h2> Magnus SGA
+                    <p>Sistema de Gerenciamento</p></h2>
 
                     <p>Unidos por patas e corações, nossa parceria cuida, protege e oferece um lar cheio de amor para cada vida animal.</p>
                     <div class="button-social">
@@ -372,7 +274,6 @@
                         <a href="#"><i class='bx bxl-instagram'></i></a>
                         <a href="#"><i class='bx bxl-whatsapp'></i></a>
                         <a href="#"><i class='bx bxl-tiktok'></i></a>
-                        <a href="#"><i class='bx bxl-twitter'></i></a>
                         <a href="#"><i class='bx bxl-linkedin'></i></a>
                         <br><br><br><br><br><br><br><br>
                     </div>
@@ -959,10 +860,6 @@ header{
   letter-spacing: .1rem;
   color: white;
 }
-
-
-
-
 
 
 

@@ -10,6 +10,7 @@
         <div class="form-content">
             
             <form action="../BancoDeDados/bancoResgates.php" method="post">
+            <input type="hidden" name="form_source" value="gestao-resgates">
                 <label for="nome-denunciante">Nome do Denunciante:</label><br>
                 <input type="text" id="nome-denunciante" name="nome-denunciante" required><br><br>
 
@@ -80,11 +81,11 @@ if (mysqli_num_rows($resultado) > 0) {
         echo "<td>" . htmlspecialchars($row['descricao_situacao']) . "</td>";
         echo "<td>" . htmlspecialchars($row['data_registro']) . "</td>";
 
-        echo "<td>" . htmlspecialchars($row['data_registro']) . "</td>";
+        $statusClass = $row['status'] === 'Concluído' ? 'btn-status concluido' : 'btn-status pendente';
+        echo "<td><button class='$statusClass' data-id='" . $row['id'] . "' onclick='toggleStatus(this)'>" . htmlspecialchars($row['status']) . "</button></td>";
 
         // Botões de editar e excluir
         echo "<td>
-                <button class='editar' data-id='" . $row['id'] . "'>Editar</button>
                 <button class='excluir' data-id='" . $row['id'] . "'>Excluir</button>
             </td>";
         echo "</tr>";
@@ -96,18 +97,32 @@ if (mysqli_num_rows($resultado) > 0) {
 
 
 <script>
-//função mudar de cor do status
 function toggleStatus(button) {
-    if (button.textContent === 'Pendente') {
-        button.textContent = 'Concluído';
-        button.classList.remove('pendente');
-        button.classList.add('concluido');
-    } else {
-        button.textContent = 'Pendente';
-        button.classList.remove('concluido');
-        button.classList.add('pendente');
-    }
+    const id = button.getAttribute('data-id');
+    const newStatus = button.textContent === 'Pendente' ? 'Concluído' : 'Pendente';
+    const newClass = newStatus === 'Concluído' ? 'btn-status concluido' : 'btn-status pendente';
+
+    button.textContent = newStatus;
+    button.className = newClass;
+
+    // Enviar a alteração para o backend
+    fetch('../BancoDeDados/atualizarStatusResgate.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `id=${id}&status=${newStatus}`
+    })
+    .then(response => response.text())
+    .then(data => {
+        if (data === 'Sucesso') {
+            console.log('Status atualizado com sucesso');
+        } else {
+            console.error('Erro ao atualizar status');
+        }
+    });
 }
+
 </script>
 
 <?php

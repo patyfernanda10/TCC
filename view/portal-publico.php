@@ -35,7 +35,54 @@
 
             <hr>
         </div>
-    </div>
+    
+
+
+<?php
+    // Conectar ao banco de dados
+    include_once('../BancoDeDados/conexao.php');
+
+    // Consultar os dados dos animais cadastrados
+    $query = "SELECT * FROM postagens";
+    $resultado = mysqli_query($conexao, $query);
+?>
+
+
+    <h3>Resgates Registrados</h3>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>Data da Publicação</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+<?php
+// Verificar se há resultados
+if (mysqli_num_rows($resultado) > 0) {
+    // Iterar sobre os resultados e preencher as linhas da tabela
+    while ($row = mysqli_fetch_assoc($resultado)) {
+
+        echo "<tr>";
+        echo "<td>" . htmlspecialchars($row['tipo']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['titulo']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['descricao']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['data_publicacao']) . "</td>";
+
+        // Botões de editar e excluir
+        echo "<td>
+                <button class='excluir' data-id='" . $row['id'] . "'>Excluir</button>
+            </td>";
+        echo "</tr>";
+    }
+} else {
+    echo "<tr><td colspan='8'>Nenhum resgate cadastrado.</td></tr>";
+}
+?>
 </div>
 
 <script>
@@ -46,6 +93,33 @@
     document.querySelector('.fechar-form-publicacao').addEventListener('click', function() {
         document.getElementById('publicacao-form-overlay').style.display = 'none';
     });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const botoesExcluir = document.querySelectorAll('.excluir');
+
+    botoesExcluir.forEach(botao => {
+        botao.addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
+
+            if(confirm('Tem certeza que deseja excluir este este produto?')) {
+                fetch('../BancoDeDados/excluirPostagens.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `id=${id}`
+                })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                    location.reload(); // Recarrega a página para atualizar a tabela
+                });
+            }
+        });
+    });
+});
 </script>
 
 <style>
@@ -149,7 +223,9 @@ th, td {
     padding: 12px;
 }
 th {
-    background-color: #f2f2f2;
+    background-color: #6db9ff;
+    color: white;
+    font-weight: bold;
 }
 hr {
     border: 0;
@@ -157,6 +233,31 @@ hr {
     background-color: #ddd;
     margin: 20px 0;
 }
+button.editar, button.excluir {
+        padding: 8px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button.editar {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    button.editar:hover {
+        background-color: #45a049;
+    }
+
+    button.excluir {
+        background-color: #f44336;
+        color: white;
+    }
+
+    button.excluir:hover {
+        background-color: #e53935;
+    }
 /* Botão Cadastrar Animal */
 .abrir-form-publicacao {
     display: inline-flex;

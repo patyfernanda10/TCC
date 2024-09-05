@@ -80,22 +80,7 @@
         </form>
     </div>
 
-    <!-- Footer Section -->
-    <footer id="contact">
-        <div class="container">
-            <div class="f-container">
-                <h2>Magnus SGO</h2>
-             
-                <p>Unidos por patas e corações, nossa parceria cuida, protege e oferece um lar cheio de amor para cada vida animal.</p>
-            
-                <div class="button-social">
-                    <button class="butao-a">Ver agora</button>
-                </div>
-               
-            </div>
-        </div>
-    </footer>
-
+   
     <script>
         document.getElementById('donation-form').addEventListener('submit', function(event) {
             var donationValue = document.querySelector('input[name="donation"]:checked');

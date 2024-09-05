@@ -13,11 +13,15 @@
     
     <nav>
     <div class="logo-container">
-        <div class="img">
-           <img src="logomarca.pnj" alt="">
-           </div>
     
-            <h1>SGE ONG de Animais</h1>
+    <div class="logo-text">
+    <i class="fas fa-paw"></i> <!-- Adiciona o ícone de patinha -->
+        <h1>Magnus SGA</h1>
+
+    </div>
+</div>
+
+    
     </div>
     <a href="?page=home">Home</a>
         <a href="?page=gestao-usuarios">Gestão de Usuários</a>
@@ -141,11 +145,45 @@ if (isset($_POST['submit'])) {
             color: #6db9ff;
         }
 .main-content {
-    margin-left: 77px; /* Margem para que o conteúdo não fique por baixo do menu */
+    margin-left: 250px; /* Margem para que o conteúdo não fique por baixo do menu */
     padding: 20px;
     width: calc(100% - 250px); /* Ajusta a largura para ocupar o restante da tela */
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-height: 100px; /* Define uma altura mínima para o container */
+    
+}
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-container .img {
+    width: 60px;
+    height: 60px;
+}
+
+.logo-container .logo-text {
+    margin-top: 10px;
+    color: #6db9ff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo-container h1 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: normal;
+}
+
+.logo-container .logo-text i {
+    font-size: 50px;
+    color: #6db9ff; /* Altere a cor do ícone se desejar */
+    margin-top: 5px; /* Espaço entre o texto e o ícone */
 }
 
     </style>

@@ -7,6 +7,7 @@
             <h2>Preencha o formulário</h2>
 
             <form action="../BancoDeDados/bancoResgates.php" method="post">
+            <input type="hidden" name="form_source" value="publico-denuncias">
                 <label for="nome-denunciante">Nome do Denunciante:</label><br>
                 <input type="text" id="nome-denunciante" name="nome-denunciante" required><br><br>
 
@@ -37,105 +38,89 @@
 </body>
 </html>
 
+
 <style>
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f8ff;
+    background-color: #ffcc00;
 }
 
 .container {
     display: flex;
-    flex-direction: row;
-    max-width: 1000px;
+    flex-direction: column;
+    max-width: 600px;
     margin: 50px auto;
-    background-color: white;
+    background-color: #ffffff;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-.info-section, .form-section {
-    flex: 1;
+    border-radius: 10px;
     padding: 20px;
 }
 
-.info-section {
-    background-color: #f0f8ff;
-    border-right: 1px solid #ddd;
-}
-
-h1 {
-    color: #007acc;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
 h2 {
-    color: #333;
+    color: #ffb700;
     margin-bottom: 20px;
-}
-
-p {
-    color: #333;
-    line-height: 1.6;
-    margin-bottom: 15px;
-}
-
-button#start-test {
-    background-color: #00aaff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button#start-test:hover {
-    background-color: #007acc;
-}
-
-.form-section form {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.form-group {
-    flex: 1 1 45%;
-    margin: 10px;
+    font-size: 24px;
+    text-align: center;
 }
 
 .form-section label {
     margin-bottom: 5px;
-    color: #555;
+    color: #333;
     display: block;
+    font-weight: bold;
 }
 
 .form-section input, .form-section select, .form-section textarea {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     font-size: 14px;
     border: 1px solid #ddd;
     border-radius: 5px;
-}
-
-.form-section textarea {
-    height: 80px;
+    background-color: #ffff;
+    margin-bottom: 15px;
 }
 
 button[type="submit"] {
-    background-color: #00aaff;
+    background-color: #ffcc00;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 20px;
+    width: 100%;
+    transition: background-color 0.3s;
 }
 
 button[type="submit"]:hover {
-    background-color: #007acc;
+    background-color: #ffb700;
+}
+
+#campo-outro {
+    margin-top: 15px;
+}
+
+#campo-outro input {
+    background-color: #fffbe6;
+}
+
+.form-section {
+    padding: 20px;
+    background-color: #ffff;
+    border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        max-width: 800px;
+    }
+
+    .form-section {
+        flex: 1;
+    }
 }
 
 </style>

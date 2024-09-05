@@ -37,7 +37,6 @@ if (mysqli_num_rows($resultado) > 0) {
         echo "<td>" . htmlspecialchars($row['data_entrevista']) . "</td>";
 
         echo "<td>
-            <button class='editar' data-id='" . $row['id'] . "'>Editar</button>
             <button class='excluir' data-id='" . $row['id'] . "'>Excluir</button>
             </td>";
        echo "</tr>";

@@ -294,7 +294,6 @@
         echo "<td>
         <a href='ficha-animal.php?id=" . $row['id'] . "' class='ver-link'></a>
         <button class='ver-botao' data-id='" . $row['id'] . "'>Ver</button>
-        <button class='editar' data-id='" . $row['id'] . "'>Editar</button>
         <button class='excluir' data-id='" . $row['id'] . "'>Excluir</button>
       </td>";
 

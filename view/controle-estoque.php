@@ -10,30 +10,35 @@
     <div class="form-overlay" id="estoque-form-overlay" style="display: none;">
         <div class="form-content">
             
-            <form action="../BancoDeDados/bancoEstoque.php" method="post">
-                <label for="tipo-item">Tipo de Item:</label><br>
-                <select id="tipo-item" name="tipo-item" required>
-                    <option value="alimento">Alimento</option>
-                    <option value="medicamento">Medicamento</option>
-                </select><br><br>
-        
-                <label for="nome-item">Nome do Item:</label><br>
-                <input type="text" id="nome-item" name="nome-item" required><br><br>
-        
-                <label for="quantidade-item">Quantidade:</label><br>
-                <input type="number" id="quantidade-item" name="quantidade-item" required><br><br>
-        
-                <label for="data-validade">Data de Validade:</label><br>
-                <input type="date" id="data-validade" name="data-validade" required><br><br>
-        
-                <label for="localizacao">Localização no Armazém:</label><br>
-                <input type="text" id="localizacao" name="localizacao" required><br><br>
-        
-                <button type="submit">Adicionar Item</button>
-                <button type="button" class="fechar-form-estoque">Fechar</button>
-            </form>
-        </div>
-    </div>
+        <form action="../BancoDeDados/bancoEstoque.php" method="post">
+                        <label for="tipo-item">Tipo de Item:</label><br>
+                        <select id="tipo-item" name="tipo-item" required onchange="updateSubcategories()">
+                            <option value="alimento">Ração</option>
+                            <option value="medicamento">Medicamento</option>
+                            <option value="suplemento">Suplemento</option>
+                            <option value="materiais-enfermagem">Materiais de Enfermagem</option>
+                            <option value="brinquedos">Brinquedos</option>
+                            <option value="acessorios">Acessórios</option>
+                            <option value="produtos-higiene">Produtos de Higiene</option>
+                        </select><br><br>
+                
+                        <label for="subcategoria-item">Subcategoria:</label><br>
+                        <select id="subcategoria-item" name="subcategoria-item" required>
+                            <!-- Subcategorias serão atualizadas dinamicamente -->
+                        </select><br><br>
+                
+                
+                        <label for="quantidade-item">Quantidade:</label><br>
+                        <input type="number" id="quantidade-item" name="quantidade-item" required><br><br>
+                
+                        <label for="localizacao">Localização no Armazém:</label><br>
+                        <input type="text" id="localizacao" name="localizacao" required><br><br>
+                
+                        <button type="submit">Adicionar Item</button>
+                        <button type="button" class="fechar-form-estoque">Fechar</button>
+                    </form>
+                </div>
+            </div>
 
     <hr>
 
@@ -49,23 +54,85 @@
     });
 </script>
 
+<script>
+   function updateSubcategories() {
+    var tipoItem = document.getElementById('tipo-item').value;
+    var subcategoriaSelect = document.getElementById('subcategoria-item');
+    var subcategorias = {
+        'alimento': [
+            'Ração seca',
+            'Ração úmida'
+        ],
+        'medicamento': [
+            'Antibióticos',
+            'Anti-inflamatórios',
+            'Analgésicos',
+            'Antiparasitários',
+            'Vitaminas e Suplementos',
+            'Medicamentos para doenças específicas'
+        ],
+        'suplemento': [
+            'Vitaminas',
+            'Minerais'
+        ],
+        'materiais-enfermagem': [
+            'Curativos',
+            'Antissépticos',
+            'Seringas e Agulhas',
+            'Soluções para limpeza de feridas',
+            'Termômetros',
+            'Instrumentos de medição',
+            'Produtos de contenção'
+        ],
+        'brinquedos': [
+            'Ressortes',
+            'Bolas',
+            'Corda'
+        ],
+        'acessorios': [
+            'Coleiras',
+            'Guias',
+            'Arneses'
+        ],
+        'produtos-higiene': [
+            'Shampoo',
+            'Condicionador',
+            'Sabonetes'
+        ]
+    };
+
+    subcategoriaSelect.innerHTML = '<option value="">Selecione uma subcategoria</option>';
+    if (subcategorias[tipoItem]) {
+        subcategorias[tipoItem].forEach(function(subcategoria) {
+            var option = document.createElement('option');
+            option.value = subcategoria.toLowerCase().replace(/\s+/g, '-');
+            option.textContent = subcategoria;
+            subcategoriaSelect.appendChild(option);
+        });
+    }
+}
+</script>
+
             
                 <!-- Tabela de Estoque Atual -->
                 <h3>Estoque Atual</h3>
                 <table>
                     <thead>
                         <tr>
-                            <th>Tipo</th>
-                            <th>Nome</th>
+                            <th>Categoria</th>
+                            <th>Subcategoria</th>
                             <th>Quantidade</th>
                             <th>Localização</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-<?php
+                    <?php
     // Conectar ao banco de dados
     include_once('../BancoDeDados/conexao.php');
+
+    // Definir o limite para estoque baixo
+    $limite_estoque_baixo = 10;
 
     // Consultar os dados dos animais cadastrados
     $query = "SELECT * FROM estoque";
@@ -74,14 +141,16 @@
     if (mysqli_num_rows($resultado) > 0) {
         // Iterar sobre os resultados e preencher as linhas da tabela
         while($row = mysqli_fetch_assoc($resultado)) {
-            echo "<tr>";
+            // Verificar se a quantidade está abaixo do limite
+            $estoque_baixo = $row['quantidade'] < $limite_estoque_baixo ? 'estoque-baixo' : '';
+
+            echo "<tr class='{$estoque_baixo}'>";
             echo "<td>" . htmlspecialchars($row['tipo_item']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['nome_item']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['subcategoria_item']) . "</td>";
             echo "<td>" . htmlspecialchars($row['quantidade']) . "</td>";
             echo "<td>" . htmlspecialchars($row['localizacao']) . "</td>";
 
             echo "<td>
-                    <button class='editar' data-id='" . $row['id'] . "'>Editar</button>
                     <button class='excluir' data-id='" . $row['id'] . "'>Excluir</button>
                 </td>";
             echo "</tr>";
@@ -94,41 +163,45 @@
 </table>
 
 <script>
+    // Adicionar um alerta se houver itens com estoque baixo
     document.addEventListener('DOMContentLoaded', function() {
-    const botoesExcluir = document.querySelectorAll('.excluir');
-
-    botoesExcluir.forEach(botao => {
-        botao.addEventListener('click', function() {
-            const id = this.getAttribute('data-id');
-
-            if(confirm('Tem certeza que deseja excluir este este produto?')) {
-                fetch('../BancoDeDados/excluirEstoque.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: `id=${id}`
-                })
-                .then(response => response.text())
-                .then(data => {
-                    alert(data);
-                    location.reload(); // Recarrega a página para atualizar a tabela
-                });
-            }
+        const alertItems = document.querySelectorAll('.estoque-baixo');
+        if (alertItems.length > 0) {
+            alert('Alguns itens estão com estoque baixo!');
+        }
+        
+        const botoesExcluir = document.querySelectorAll('.excluir');
+        botoesExcluir.forEach(botao => {
+            botao.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                if (confirm('Tem certeza que deseja excluir este produto?')) {
+                    fetch('../BancoDeDados/excluirEstoque.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: `id=${id}`
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        alert(data);
+                        location.reload(); // Recarrega a página para atualizar a tabela
+                    });
+                }
+            });
         });
     });
-});
 </script>
 
-<?php
-// Fechar a conexão com o banco de dados
-mysqli_close($conexao);
-?>
               
             
             
 
 <style>
+      /* Estilo para itens com estoque baixo */
+      .estoque-baixo {
+        background-color: #ffdddd; /* Cor de fundo para estoque baixo */
+    }
     body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;

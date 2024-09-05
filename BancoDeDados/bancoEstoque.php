@@ -6,14 +6,13 @@ include_once('conexao.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Receber dados do formulário
     $tipo_item = $_POST['tipo-item'];
-    $nome_item = $_POST['nome-item'];
+    $subcategoria_item = $_POST['subcategoria-item']; // Novo campo
     $quantidade = $_POST['quantidade-item'];
-    $data_validade = $_POST['data-validade'];
     $localizacao = $_POST['localizacao'];
 
     // Inserir dados na tabela
-    $query = "INSERT INTO estoque (tipo_item, nome_item, quantidade, data_validade, localizacao)
-              VALUES ('$tipo_item', '$nome_item', '$quantidade', '$data_validade', '$localizacao')";
+    $query = "INSERT INTO estoque (tipo_item, subcategoria_item, quantidade, localizacao)
+              VALUES ('$tipo_item', '$subcategoria_item', '$quantidade', '$localizacao')";
     if (mysqli_query($conexao, $query)) {
         echo "<script>
                 alert('Dados inseridos com sucesso!');
@@ -22,9 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "Erro ao inserir os dados: " . mysqli_error($conexao);
     }
-    }
+}
 
-    // Fechar conexão
-    mysqli_close($conexao);
-
+// Fechar conexão
+mysqli_close($conexao);
 ?>

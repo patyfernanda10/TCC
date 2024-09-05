@@ -80,10 +80,6 @@
             <!-- Lista de Transações Financeiras -->
         <h3>Transações Financeiras</h3>
 
-        <form method="GET" action="">
-            <input type="text" name="search" placeholder="Buscar por descrição">
-            <button type="submit">Pesquisar</button>
-        </form>
 
         <form method="GET" action="">
             <label for="mes">Mês:</label>
@@ -103,6 +99,14 @@
             </select>
             <button type="submit">Filtrar</button>
         </form>
+
+          <!-- Resumo Financeiro -->
+          <div class="resumo-financeiro">
+                <h3>Resumo Financeiro</h3>
+                <p><strong>Total de Receitas:</strong> R$ <?php echo number_format($totalReceitas, 2, ',', '.'); ?></p>
+                <p><strong>Total de Despesas:</strong> R$ <?php echo number_format($totalDespesas, 2, ',', '.'); ?></p>
+                <p><strong>Saldo:</strong> R$ <?php echo number_format($saldo, 2, ',', '.'); ?></p>
+            </div>
         
             <table border="1" cellpadding="10" cellspacing="0">
                 <thead>
@@ -128,7 +132,6 @@
                         echo "<td>" . htmlspecialchars($row['data_transacao']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['categoria_transacao']) . "</td>";
                         echo "<td>
-                                <button class='editar' data-id='" . $row['id'] . "'>Editar</button>
                                 <button class='excluir' data-id='" . $row['id'] . "'>Excluir</button>
                               </td>";
                         echo "</tr>";
@@ -139,6 +142,8 @@
                 ?>
                 </tbody>
             </table>
+            </div>
+            </div>
 
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
@@ -169,22 +174,12 @@
 
             <hr>
 
-            <!-- Resumo Financeiro -->
-            <div class="resumo-financeiro">
-                <h3>Resumo Financeiro</h3>
-                <p><strong>Total de Receitas:</strong> R$ <?php echo number_format($totalReceitas, 2, ',', '.'); ?></p>
-                <p><strong>Total de Despesas:</strong> R$ <?php echo number_format($totalDespesas, 2, ',', '.'); ?></p>
-                <p><strong>Saldo:</strong> R$ <?php echo number_format($saldo, 2, ',', '.'); ?></p>
-            </div>
-
 
             <?php
             // Fechar a conexão com o banco de dados
             mysqli_close($conexao);
             ?>
-        </div>
-    </div>
-</div>
+       
 
 <style>
     body {
@@ -381,31 +376,32 @@ table {
         border: 1px solid #ddd; /* Cor da borda alterada para cinza claro */
     }
     /* Estilo para o Resumo Financeiro */
-.resumo-financeiro {
-    background-color: #6db9ff; /* Cor de fundo */
-    padding: 20px; /* Espaçamento interno */
-    border-radius: 8px; /* Bordas arredondadas */
-    color: white; /* Cor do texto */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
-    margin-top: 20px; /* Margem superior */
-    font-family: Arial, sans-serif; /* Fonte */
-}
+    .resumo-financeiro {
+        background-color: #f0f8ff; /* Cor de fundo suave */
+        padding: 20px; /* Espaçamento interno */
+        border-radius: 8px; /* Bordas arredondadas */
+        color: #333; /* Cor do texto */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+        margin-top: 20px; /* Margem superior */
+        font-family: Arial, sans-serif; /* Fonte */
+        margin-bottom: 15px;
+    }
 
-.resumo-financeiro h3 {
-    font-size: 24px; /* Tamanho da fonte */
-    margin-bottom: 15px; /* Espaçamento inferior */
-    color: white; /* Cor do título */
-}
+    .resumo-financeiro h3 {
+        font-size: 24px; /* Tamanho da fonte */
+        margin-bottom: 15px; /* Espaçamento inferior */
+        color: #333; /* Cor do título */
+    }
 
-.resumo-financeiro p {
-    font-size: 18px; /* Tamanho da fonte */
-    margin: 8px 0; /* Espaçamento entre parágrafos */
-}
+    .resumo-financeiro p {
+        font-size: 18px; /* Tamanho da fonte */
+        margin: 8px 0; /* Espaçamento entre parágrafos */
+    }
 
-.resumo-financeiro p strong {
-    color: #ffd700; /* Cor do texto em negrito */
-    font-weight: bold; /* Negrito */
-}
+    .resumo-financeiro p strong {
+        color: #ff9900; /* Cor do texto em negrito */
+        font-weight: bold; /* Negrito */
+    }
 
 /* Botão Cadastrar Animal */
 #abrir-form-financeiro {

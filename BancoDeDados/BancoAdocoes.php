@@ -1,8 +1,7 @@
 <?php
-if(isset($_POST['submit'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include_once('conexao.php');
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome_completo = $_POST['nome-tutor'];
     $data_nascimento = $_POST['data-nasc'];
     $telefone = $_POST['tel-tutor'];
@@ -16,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Criar a conexão com o banco de dados
     $stmt = $conexao->prepare($sql);
-    
+
     // Verificar se a preparação da consulta foi bem-sucedida
     if ($stmt === false) {
         die('Erro ao preparar a consulta: ' . $conexao->error);
@@ -27,13 +26,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Executar a consulta
     if ($stmt->execute()) {
-        echo "Tutor registrado com sucesso!";
+        echo "<script>
+                alert('Cadastro realizado com sucesso.');
+                window.location.href = 'http://localhost/MVC/view/publico-adocao';
+              </script>";
     } else {
         echo "Erro ao registrar tutor: " . $stmt->error;
     }
 
     // Fechar a declaração
     $stmt->close();
-}
+    
+    // Fechar a conexão
+    $conexao->close();
 }
 ?>

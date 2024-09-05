@@ -75,7 +75,6 @@
         echo "<td>" . htmlspecialchars($row['data']) . "</td>";
         // Botões de editar e excluir
         echo "<td>
-                <button class='editar' data-id='" . $row['id'] . "'>Editar</button>
                 <button class='excluir' data-id='" . $row['id'] . "'>Excluir</button>
             </td>";
         echo "</tr>";
